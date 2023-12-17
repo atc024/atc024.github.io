@@ -1,3 +1,7 @@
+
+packages:
+  my_package: https://github.com/atc024/esphome-secrets/blob/main/secrets.yaml
+
 esphome:
   name: smartbob-16-relay
   friendly_name: SmartBob-1
