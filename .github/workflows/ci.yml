@@ -15,7 +15,9 @@ jobs:
       - name: Checkout Secrets repository
         uses: actions/checkout@v4
         with:
-          repository: atc024/esphome-secrets 
+          repository: atc024/esphome-secrets
+          ref: main
+          token: ${{ secrets.PAT }}
           path: './secrets'
           
       - name: Checkout source code
