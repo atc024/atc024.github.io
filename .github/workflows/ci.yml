@@ -15,11 +15,18 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-        
-      - name: List files
-        run: ls
-      
-#      - name: Build ESPHome firmware to verify configuration
-#        uses: esphome/build-action@v1.8.0
-#        with:
-#          yaml_file: ${{ matrix.file }}
+      - name: Checkout Secrets repository
+        uses: actions/checkout@v4
+        with:
+          repository: atc024/esphome-secrets
+          ref: main
+          token: ${{ secrets.PAT }}
+          path: './secrets'
+
+      - name: Copy secrets file before build
+        run: cp ./secrets/secrets.yaml .
+
+      - name: Build ESPHome firmware to verify configuration
+        uses: esphome/build-action@v1.8.0
+        with:
+          yaml_file: ${{ matrix.file }}
