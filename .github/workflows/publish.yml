@@ -13,5 +13,5 @@ jobs:
       files: smartbob.yaml
       name: SmartBob Project
       secrets_repo: atc024/esphome-secrets
-      secrets_pat: ${{ secrets.PAT }}
-      
+    secrets:
+      pat: ${{ secrets.PAT }}
