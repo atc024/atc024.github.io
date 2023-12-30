@@ -7,7 +7,10 @@ on:
 
 jobs:
   build:
-    uses: esphome/workflows/.github/workflows/publish.yml@main
+    uses: atc024/esphome-workflows/.github/workflows/publish.yml@main
     with:
       files: smartbob.yaml
       name: SmartBob Project
+      secrets_repo: atc024/esphome-secrets
+      secrets_pat: ${{ secrets.PAT }}
+      
