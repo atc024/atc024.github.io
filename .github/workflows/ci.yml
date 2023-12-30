@@ -12,6 +12,9 @@ jobs:
         file:
           - smartbob.yaml
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
       - name: Checkout Secrets repository
         uses: actions/checkout@v4
         with:
@@ -19,9 +22,6 @@ jobs:
           ref: main
           token: ${{ secrets.PAT }}
           path: './secrets'
-          
-      - name: Checkout source code
-        uses: actions/checkout@v4
 
       - name: Copy secrets file before build
         run: cp ./secrets/secrets.yaml .
