@@ -7,21 +7,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  decrypt:
-    name: Decrypt Job
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Decrypt secrets
-        run: ./decrypt_secrets.sh
-        env:
-          SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
-      - run: cat secrets.yaml
   build:
-    uses: atc024/esphome-workflows/.github/workflows/publish.yml@main
+    uses: ./.github/workflows/esphome-publish.yml
     with:
       files: smartbob.yaml
       name: SmartBob Project
-      secrets_repo: atc024/esphome-secrets
-    secrets:
-      pat: ${{ secrets.PAT }}
+    secrets: inherit
