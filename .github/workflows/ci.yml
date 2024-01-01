@@ -13,7 +13,7 @@ jobs:
           - smartbob.yaml
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
       - run: ./decrypt_secrets.sh
         env:
           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
