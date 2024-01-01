@@ -1,0 +1,17 @@
+{
+  "name": "SmartBob Project",
+  "version": "",
+  "home_assistant_domain": "esphome",
+  "new_install_skip_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "smartbob-16-relay-esp32/smartbob-16-relay-esp32.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

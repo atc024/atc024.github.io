@@ -1,0 +1,9 @@
+{
+  "chipFamily": "ESP32",
+  "parts": [
+    {
+      "path": "smartbob-16-relay-esp32/smartbob-16-relay-esp32.bin",
+      "offset": 0
+    }
+  ]
+}
