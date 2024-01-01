@@ -1,0 +1,823 @@
+esphome:
+  name: smartbob-16-relay
+  friendly_name: SmartBob-1
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+logger:
+  level: VERBOSE
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "5jNA1jt+suyS+XLQrHvrUs7kItbKvpdePQiVjnBTWuk="
+  reboot_timeout: 0s
+
+ota:
+  password: "46554bbf13e8d6c5596a0d78cc8bd4fb"
+
+# This should point to the public location of this yaml file.
+#dashboard_import:
+#  package_import_url: https://github.com/atc024/esphome-test/blob/main/smartbob.yaml
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: 192.168.0.53
+    gateway: 192.168.0.34
+    subnet: 255.255.255.0
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  #ap:
+  #  ssid: "Smartbob-1 Fallback Hotspot"
+  #  password: "bqccneNfMqTB"
+
+captive_portal:
+
+# KONFIGURACJA LAN
+#ethernet:
+#  type: LAN8720
+#  mdc_pin: GPIO23
+#  mdio_pin: GPIO18
+#  #clk_mode: GPIO0_IN
+#  #power_pin: GPIO16
+#  clk_mode: GPIO17_OUT
+#  phy_addr: 1
+#
+#  manual_ip:
+#    static_ip: 192.168.0.40
+#    gateway: 192.168.0.1
+#    subnet: 255.255.255.0
+
+#KONFIGURACJA GUI WEB
+web_server:
+  port: 80
+
+# KONFIGURACJA I2C 
+i2c:
+   - id: bus_a
+     sda: 5
+     scl: 15
+     scan: true
+     frequency: 400kHz
+
+# KONFIGURACJA MCP23017 x2
+mcp23017:
+  - id: 'mcp23017_hub' 
+    address: 0x20
+  - id: 'mcp23017_hub_2' 
+    address: 0x21
+
+binary_sensor:
+  - platform: status
+    name: "Status"
+    icon: mdi:check-network-outline
+  
+  # KONFIGURACJA WEJŚĆ
+  - platform: gpio
+    name: "INPUT-01"
+    id: input_01
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 7
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_01).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_01).make_call().set_command_open().perform();
+            } else {
+              id(cover_01).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-02"
+    id: input_02
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 6
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_01).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_01).make_call().set_command_close().perform();
+            } else {
+              id(cover_01).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-03"
+    id: input_03
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 5
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_02).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_02).make_call().set_command_open().perform();
+            } else {
+              id(cover_02).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-04"
+    id: input_04
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 4
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_02).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_02).make_call().set_command_close().perform();
+            } else {
+              id(cover_02).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-05"
+    id: input_05
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 3
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_03).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_03).make_call().set_command_open().perform();
+            } else {
+              id(cover_03).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-06"
+    id: input_06
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 2
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_03).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_03).make_call().set_command_close().perform();
+            } else {
+              id(cover_03).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-07"
+    id: input_07
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 1
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_04).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_04).make_call().set_command_open().perform();
+            } else {
+              id(cover_04).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-08"
+    id: input_08
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 0
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_04).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_04).make_call().set_command_close().perform();
+            } else {
+              id(cover_04).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-09"
+    id: input_09
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 15
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_05).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_05).make_call().set_command_open().perform();
+            } else {
+              id(cover_05).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-10"
+    id: input_10
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 14
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_05).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_05).make_call().set_command_close().perform();
+            } else {
+              id(cover_05).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-11"
+    id: input_11
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 13
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_06).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_06).make_call().set_command_open().perform();
+            } else {
+              id(cover_06).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-12"
+    id: input_12
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 12
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_06).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_06).make_call().set_command_close().perform();
+            } else {
+              id(cover_06).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-13"
+    id: input_13
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 11
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_07).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_07).make_call().set_command_open().perform();
+            } else {
+              id(cover_07).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-14"
+    id: input_14
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 10
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_07).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_07).make_call().set_command_close().perform();
+            } else {
+              id(cover_07).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-15"
+    id: input_15
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 9
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_08).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_08).make_call().set_command_open().perform();
+            } else {
+              id(cover_08).make_call().set_command_stop().perform();
+            }
+  - platform: gpio
+    name: "INPUT-16"
+    id: input_16
+    pin:
+      mcp23xxx: mcp23017_hub_2
+      number: 8
+      mode:
+        input: true
+        pullup: false
+      inverted: true
+    on_press:
+       then:
+        - lambda: |
+            if (id(cover_08).current_operation == COVER_OPERATION_IDLE) {
+              id(cover_08).make_call().set_command_close().perform();
+            } else {
+              id(cover_08).make_call().set_command_stop().perform();
+            }
+
+
+switch:
+  - platform: restart
+    name: Restart
+    
+  #KONFIGURACJA WYJŚĆ     
+  - platform: gpio
+    name: "REALY-01"
+    id: relay_01
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 8
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-02"
+    id: relay_02
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 9
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-03"
+    id: relay_03
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 10
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-04"
+    id: relay_04
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 11
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-05"
+    id: relay_05
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 12
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-06"
+    id: relay_06
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 13
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-07"
+    id: relay_07
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 14
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-08"
+    id: relay_08
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 15
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-09"
+    id: relay_09
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 0
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-10"
+    id: relay_10
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 1
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-11"
+    id: relay_11
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 2
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-12"
+    id: relay_12
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 3
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-13"
+    id: relay_13
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 4
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-14"
+    id: relay_14
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 5
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-15"
+    id: relay_15
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 6
+      mode: OUTPUT
+      inverted: false
+    internal: true
+  - platform: gpio
+    name: "REALY-16"
+    id: relay_16
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 7
+      mode: OUTPUT
+      inverted: false
+    internal: true
+      
+      
+cover:
+  - platform: time_based
+    name: 'Time Based Cover 1'
+    id: "cover_01"
+    # PWR - relay_01
+    # DIR - relay_02
+    open_action:
+      - switch.turn_off: relay_01
+      - delay: 100ms
+      - switch.turn_on: relay_02
+      - delay: 100ms
+      - switch.turn_on: relay_01
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_01
+      - delay: 100ms
+      - switch.turn_off: relay_02
+      - delay: 100ms
+      - switch.turn_on: relay_01
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_01
+      - delay: 100ms
+      - switch.turn_off: relay_02  
+
+  - platform: time_based
+    name: 'Time Based Cover 2'
+    id: "cover_02"
+    # PWR - relay_03
+    # DIR - relay_04
+    open_action:
+      - switch.turn_off: relay_03
+      - delay: 100ms
+      - switch.turn_on: relay_04
+      - delay: 100ms
+      - switch.turn_on: relay_03
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_03
+      - delay: 100ms
+      - switch.turn_off: relay_04
+      - delay: 100ms
+      - switch.turn_on: relay_03
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_03
+      - delay: 100ms
+      - switch.turn_off: relay_04
+
+  - platform: time_based
+    name: 'Time Based Cover 3'
+    id: "cover_03"
+    # PWR - relay_05
+    # DIR - relay_06
+    open_action:
+      - switch.turn_off: relay_05
+      - delay: 100ms
+      - switch.turn_on: relay_06
+      - delay: 100ms
+      - switch.turn_on: relay_05
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_05
+      - delay: 100ms
+      - switch.turn_off: relay_06
+      - delay: 100ms
+      - switch.turn_on: relay_05
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_05
+      - delay: 100ms
+      - switch.turn_off: relay_06
+
+  - platform: time_based
+    name: 'Time Based Cover 4'
+    id: "cover_04"
+    # PWR - relay_07
+    # DIR - relay_08
+    open_action:
+      - switch.turn_off: relay_07
+      - delay: 100ms
+      - switch.turn_on: relay_08
+      - delay: 100ms
+      - switch.turn_on: relay_07
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_07
+      - delay: 100ms
+      - switch.turn_off: relay_08
+      - delay: 100ms
+      - switch.turn_on: relay_07
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_07
+      - delay: 100ms
+      - switch.turn_off: relay_08
+
+  - platform: time_based
+    name: 'Time Based Cover 5'
+    id: "cover_05"
+    # PWR - relay_09
+    # DIR - relay_10
+    open_action:
+      - switch.turn_off: relay_09
+      - delay: 100ms
+      - switch.turn_on: relay_10
+      - delay: 100ms
+      - switch.turn_on: relay_09
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_09
+      - delay: 100ms
+      - switch.turn_off: relay_10
+      - delay: 100ms
+      - switch.turn_on: relay_09
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_09
+      - delay: 100ms
+      - switch.turn_off: relay_10
+
+  - platform: time_based
+    name: 'Time Based Cover 6'
+    id: "cover_06"
+    # PWR - relay_11
+    # DIR - relay_12
+    open_action:
+      - switch.turn_off: relay_11
+      - delay: 100ms
+      - switch.turn_on: relay_12
+      - delay: 100ms
+      - switch.turn_on: relay_11
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_11
+      - delay: 100ms
+      - switch.turn_off: relay_12
+      - delay: 100ms
+      - switch.turn_on: relay_11
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_11
+      - delay: 100ms
+      - switch.turn_off: relay_12
+
+  - platform: time_based
+    name: 'Time Based Cover 7'
+    id: "cover_07"
+    # PWR - relay_13
+    # DIR - relay_14
+    open_action:
+      - switch.turn_off: relay_13
+      - delay: 100ms
+      - switch.turn_on: relay_14
+      - delay: 100ms
+      - switch.turn_on: relay_13
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_13
+      - delay: 100ms
+      - switch.turn_off: relay_14
+      - delay: 100ms
+      - switch.turn_on: relay_13
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_13
+      - delay: 100ms
+      - switch.turn_off: relay_14
+
+  - platform: time_based
+    name: 'Time Based Cover 8'
+    id: "cover_08"
+    # PWR - relay_15
+    # DIR - relay_16
+    open_action:
+      - switch.turn_off: relay_15
+      - delay: 100ms
+      - switch.turn_on: relay_16
+      - delay: 100ms
+      - switch.turn_on: relay_15
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_15
+      - delay: 100ms
+      - switch.turn_off: relay_16
+      - delay: 100ms
+      - switch.turn_on: relay_15
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_15
+      - delay: 100ms
+      - switch.turn_off: relay_16
+
+#KONFIGURACJA POZOSTAŁE
+text_sensor:
+  # Expose ESPHome version as sensor.
+  - platform: version
+    name: Version
+    icon: mdi:chip
+  # Expose WiFi information as sensors.
+  - platform: wifi_info
+    ip_address:
+      name: IP Address
+      icon: mdi:wifi
+    ssid:
+      name: Connected SSID
+      icon: mdi:wifi
+    bssid:
+      name: Connected BSSID
+      icon: mdi:wifi
+    mac_address:
+      name: Mac Wifi Address
+      icon: mdi:wifi  
+  # SmartBob expose uptime? TODO
+  - platform: template
+    name: "ESP32-M03 Uptime"
+    id: uptime_human_M03
+    icon: mdi:clock-start
+
+
+sensor:
+  - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
+    name: "WiFi Signal dB"
+    id: wifi_signal_db
+    icon: mdi:wifi
+    update_interval: 60s
+    entity_category: "diagnostic"
+
+  # Example configuration entry
+  - platform: uptime
+    name: Uptime Sensor
+    id: uptime_sensor_M03
+    internal: true
+    update_interval: 1s
+    on_raw_value:
+      then:
+        - text_sensor.template.publish:
+            id: uptime_human_M03
+            state: !lambda |-
+              int seconds = round(id(uptime_sensor_M03).raw_state);
+              int days = seconds / (24 * 3600);
+              seconds = seconds % (24 * 3600);
+              int hours = seconds / 3600;
+              seconds = seconds % 3600;
+              int minutes = seconds /  60;
+              seconds = seconds % 60;
+              return (
+                (days ? to_string(days) + "d " : "") +
+                (hours ? to_string(hours) + "h " : "") +
+                (minutes ? to_string(minutes) + "m " : "") +
+                (to_string(seconds) + "s")
+              ).c_str();
+  - platform: uptime
+    name: "Uptime Sensor M03"
+    id: upt_M03
+    internal: true
+
+#font
+#font:
+#- file: 'arial.ttf'
+#  id: font1
+#  size: 10
+font:
+  - file: "gfonts://Roboto"
+    id: roboto
+    size: 10
+
+#- file: 'materialdesignicons-webfont.ttf'
+#  id: materialdesignicons
+#  size: 14
+#  glyphs: [
+#      "\U000F0A5F", # IP
+#      "\U000F04A2", # signal
+#      "\U000F05A9", # wifi
+#      "\U000F048B", # server
+#      "\U000F0FA9" # clock
+#      ]
+
+#- file: 'arial.ttf'
+#  id: font2
+#  size: 7
+
+display:
+  - platform: ssd1306_i2c
+    model: "SSD1306_128X64"
+    address: 0x3C
+    update_interval: 1s
+    lambda: |-
+     int seconds = round(id(uptime_sensor_M03).raw_state);
+     int days = seconds / (24 * 3600);
+     seconds = seconds % (24 * 3600);
+     int hours = seconds / 3600;
+     seconds = seconds % 3600;
+     int minutes = seconds /  60;
+     seconds = seconds % 60;
+     it.printf(0, 0, id(roboto), "%dd  %dh  %dm  %ds", days, hours, minutes, seconds);
+     it.printf(0, 18, id(roboto), "ATC024");
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    
