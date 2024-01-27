@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4.1.1
-      - run: ./decrypt_secrets.sh
-        env:
-          SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
       - name: Build ESPHome firmware to verify configuration
         uses: esphome/build-action@v1.8.0
         with:
