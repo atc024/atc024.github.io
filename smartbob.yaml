@@ -523,194 +523,194 @@ cover:
   - platform: time_based
     name: 'Time Based Cover 1'
     id: "cover_01"
-    # PWR - relay_01
-    # DIR - relay_02
+    # DIR - relay_01
+    # PWR - relay_02
     open_action:
-      - switch.turn_off: relay_01
-      - delay: 100ms
-      - switch.turn_on: relay_02
-      - delay: 100ms
-      - switch.turn_on: relay_01
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_01
-      - delay: 100ms
       - switch.turn_off: relay_02
       - delay: 100ms
       - switch.turn_on: relay_01
-    close_duration: 0.5min
-    stop_action:
+      - delay: 100ms
+      - switch.turn_on: relay_02
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_02
+      - delay: 100ms
       - switch.turn_off: relay_01
       - delay: 100ms
-      - switch.turn_off: relay_02  
+      - switch.turn_on: relay_02
+    close_duration: 0.5min
+    stop_action:
+      - switch.turn_off: relay_02
+      - delay: 100ms
+      - switch.turn_off: relay_01  
 
   - platform: time_based
     name: 'Time Based Cover 2'
     id: "cover_02"
-    # PWR - relay_03
-    # DIR - relay_04
+    # DIR - relay_03
+    # PWR - relay_04
     open_action:
+      - switch.turn_off: relay_04
+      - delay: 100ms
+      - switch.turn_on: relay_03
+      - delay: 100ms
+      - switch.turn_on: relay_04
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_04
+      - delay: 100ms
       - switch.turn_off: relay_03
       - delay: 100ms
       - switch.turn_on: relay_04
-      - delay: 100ms
-      - switch.turn_on: relay_03
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_03
-      - delay: 100ms
-      - switch.turn_off: relay_04
-      - delay: 100ms
-      - switch.turn_on: relay_03
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_03
-      - delay: 100ms
       - switch.turn_off: relay_04
+      - delay: 100ms
+      - switch.turn_off: relay_03
 
   - platform: time_based
     name: 'Time Based Cover 3'
     id: "cover_03"
-    # PWR - relay_05
-    # DIR - relay_06
+    # DIR - relay_05
+    # PWR - relay_06
     open_action:
+      - switch.turn_off: relay_06
+      - delay: 100ms
+      - switch.turn_on: relay_05
+      - delay: 100ms
+      - switch.turn_on: relay_06
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_06
+      - delay: 100ms
       - switch.turn_off: relay_05
       - delay: 100ms
       - switch.turn_on: relay_06
-      - delay: 100ms
-      - switch.turn_on: relay_05
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_05
-      - delay: 100ms
-      - switch.turn_off: relay_06
-      - delay: 100ms
-      - switch.turn_on: relay_05
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_05
-      - delay: 100ms
       - switch.turn_off: relay_06
+      - delay: 100ms
+      - switch.turn_off: relay_05
 
   - platform: time_based
     name: 'Time Based Cover 4'
     id: "cover_04"
-    # PWR - relay_07
-    # DIR - relay_08
+    # DIR - relay_07
+    # PWR - relay_08
     open_action:
+      - switch.turn_off: relay_08
+      - delay: 100ms
+      - switch.turn_on: relay_07
+      - delay: 100ms
+      - switch.turn_on: relay_08
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_08
+      - delay: 100ms
       - switch.turn_off: relay_07
       - delay: 100ms
       - switch.turn_on: relay_08
-      - delay: 100ms
-      - switch.turn_on: relay_07
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_07
-      - delay: 100ms
-      - switch.turn_off: relay_08
-      - delay: 100ms
-      - switch.turn_on: relay_07
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_07
-      - delay: 100ms
       - switch.turn_off: relay_08
+      - delay: 100ms
+      - switch.turn_off: relay_07
 
   - platform: time_based
     name: 'Time Based Cover 5'
     id: "cover_05"
-    # PWR - relay_09
-    # DIR - relay_10
+    # DIR - relay_09
+    # PWR - relay_10
     open_action:
+      - switch.turn_off: relay_10
+      - delay: 100ms
+      - switch.turn_on: relay_09
+      - delay: 100ms
+      - switch.turn_on: relay_10
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_10
+      - delay: 100ms
       - switch.turn_off: relay_09
       - delay: 100ms
       - switch.turn_on: relay_10
-      - delay: 100ms
-      - switch.turn_on: relay_09
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_09
-      - delay: 100ms
-      - switch.turn_off: relay_10
-      - delay: 100ms
-      - switch.turn_on: relay_09
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_09
-      - delay: 100ms
       - switch.turn_off: relay_10
+      - delay: 100ms
+      - switch.turn_off: relay_09
 
   - platform: time_based
     name: 'Time Based Cover 6'
     id: "cover_06"
-    # PWR - relay_11
-    # DIR - relay_12
+    # DIR - relay_11
+    # PWR - relay_12
     open_action:
+      - switch.turn_off: relay_12
+      - delay: 100ms
+      - switch.turn_on: relay_11
+      - delay: 100ms
+      - switch.turn_on: relay_12
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_12
+      - delay: 100ms
       - switch.turn_off: relay_11
       - delay: 100ms
       - switch.turn_on: relay_12
-      - delay: 100ms
-      - switch.turn_on: relay_11
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_11
-      - delay: 100ms
-      - switch.turn_off: relay_12
-      - delay: 100ms
-      - switch.turn_on: relay_11
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_11
-      - delay: 100ms
       - switch.turn_off: relay_12
+      - delay: 100ms
+      - switch.turn_off: relay_11
 
   - platform: time_based
     name: 'Time Based Cover 7'
     id: "cover_07"
-    # PWR - relay_13
-    # DIR - relay_14
+    # DIR - relay_13
+    # PWR - relay_14
     open_action:
+      - switch.turn_off: relay_14
+      - delay: 100ms
+      - switch.turn_on: relay_13
+      - delay: 100ms
+      - switch.turn_on: relay_14
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_14
+      - delay: 100ms
       - switch.turn_off: relay_13
       - delay: 100ms
       - switch.turn_on: relay_14
-      - delay: 100ms
-      - switch.turn_on: relay_13
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_13
-      - delay: 100ms
-      - switch.turn_off: relay_14
-      - delay: 100ms
-      - switch.turn_on: relay_13
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_13
-      - delay: 100ms
       - switch.turn_off: relay_14
+      - delay: 100ms
+      - switch.turn_off: relay_13
 
   - platform: time_based
     name: 'Time Based Cover 8'
     id: "cover_08"
-    # PWR - relay_15
-    # DIR - relay_16
+    # DIR - relay_15
+    # PWR - relay_16
     open_action:
+      - switch.turn_off: relay_16
+      - delay: 100ms
+      - switch.turn_on: relay_15
+      - delay: 100ms
+      - switch.turn_on: relay_16
+    open_duration: 0.5min
+    close_action:
+      - switch.turn_off: relay_16
+      - delay: 100ms
       - switch.turn_off: relay_15
       - delay: 100ms
       - switch.turn_on: relay_16
-      - delay: 100ms
-      - switch.turn_on: relay_15
-    open_duration: 0.5min
-    close_action:
-      - switch.turn_off: relay_15
-      - delay: 100ms
-      - switch.turn_off: relay_16
-      - delay: 100ms
-      - switch.turn_on: relay_15
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_15
-      - delay: 100ms
       - switch.turn_off: relay_16
+      - delay: 100ms
+      - switch.turn_off: relay_15
 
 #KONFIGURACJA POZOSTAŁE
 text_sensor:
