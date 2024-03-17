@@ -523,194 +523,162 @@ cover:
   - platform: time_based
     name: 'Time Based Cover 1'
     id: "cover_01"
-    # DIR - relay_01
-    # PWR - relay_02
+    # UP   - relay_01
+    # DOWN - relay_02
     open_action:
-      - switch.turn_off: relay_02
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_01
-      - delay: 100ms
-      - switch.turn_on: relay_02
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_02
-      - delay: 100ms
-      - switch.turn_off: relay_01
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_02
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_02
+      - switch.turn_off: relay_01
       - delay: 100ms
-      - switch.turn_off: relay_01  
+      - switch.turn_off: relay_02
 
   - platform: time_based
     name: 'Time Based Cover 2'
     id: "cover_02"
-    # DIR - relay_03
-    # PWR - relay_04
+    # UP   - relay_03
+    # DOWN - relay_04
     open_action:
-      - switch.turn_off: relay_04
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_03
-      - delay: 100ms
-      - switch.turn_on: relay_04
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_04
-      - delay: 100ms
-      - switch.turn_off: relay_03
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_04
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_04
-      - delay: 100ms
       - switch.turn_off: relay_03
+      - delay: 100ms
+      - switch.turn_off: relay_04
 
   - platform: time_based
     name: 'Time Based Cover 3'
     id: "cover_03"
-    # DIR - relay_05
-    # PWR - relay_06
+    # UP   - relay_05
+    # DOWN - relay_06
     open_action:
-      - switch.turn_off: relay_06
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_05
-      - delay: 100ms
-      - switch.turn_on: relay_06
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_06
-      - delay: 100ms
-      - switch.turn_off: relay_05
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_06
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_06
-      - delay: 100ms
       - switch.turn_off: relay_05
+      - delay: 100ms
+      - switch.turn_off: relay_06
 
   - platform: time_based
     name: 'Time Based Cover 4'
     id: "cover_04"
-    # DIR - relay_07
-    # PWR - relay_08
+    # UP   - relay_07
+    # DOWN - relay_08
     open_action:
-      - switch.turn_off: relay_08
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_07
-      - delay: 100ms
-      - switch.turn_on: relay_08
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_08
-      - delay: 100ms
-      - switch.turn_off: relay_07
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_08
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_08
-      - delay: 100ms
       - switch.turn_off: relay_07
+      - delay: 100ms
+      - switch.turn_off: relay_08
 
   - platform: time_based
     name: 'Time Based Cover 5'
     id: "cover_05"
-    # DIR - relay_09
-    # PWR - relay_10
+    # UP   - relay_09
+    # DOWN - relay_10
     open_action:
-      - switch.turn_off: relay_10
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_09
-      - delay: 100ms
-      - switch.turn_on: relay_10
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_10
-      - delay: 100ms
-      - switch.turn_off: relay_09
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_10
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_10
-      - delay: 100ms
       - switch.turn_off: relay_09
+      - delay: 100ms
+      - switch.turn_off: relay_10
 
   - platform: time_based
     name: 'Time Based Cover 6'
     id: "cover_06"
-    # DIR - relay_11
-    # PWR - relay_12
+    # UP   - relay_11
+    # DOWN - relay_12
     open_action:
-      - switch.turn_off: relay_12
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_11
-      - delay: 100ms
-      - switch.turn_on: relay_12
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_12
-      - delay: 100ms
-      - switch.turn_off: relay_11
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_12
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_12
-      - delay: 100ms
       - switch.turn_off: relay_11
+      - delay: 100ms
+      - switch.turn_off: relay_12
 
   - platform: time_based
     name: 'Time Based Cover 7'
     id: "cover_07"
-    # DIR - relay_13
-    # PWR - relay_14
+    # UP   - relay_13
+    # DOWN - relay_14
     open_action:
-      - switch.turn_off: relay_14
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_13
-      - delay: 100ms
-      - switch.turn_on: relay_14
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_14
-      - delay: 100ms
-      - switch.turn_off: relay_13
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_14
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_14
-      - delay: 100ms
       - switch.turn_off: relay_13
+      - delay: 100ms
+      - switch.turn_off: relay_14
 
   - platform: time_based
     name: 'Time Based Cover 8'
     id: "cover_08"
-    # DIR - relay_15
-    # PWR - relay_16
+    # UP   - relay_15
+    # DOWN - relay_16
     open_action:
-      - switch.turn_off: relay_16
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_15
-      - delay: 100ms
-      - switch.turn_on: relay_16
     open_duration: 0.5min
     close_action:
-      - switch.turn_off: relay_16
-      - delay: 100ms
-      - switch.turn_off: relay_15
-      - delay: 100ms
+      # Min 0.5s needed to protect the motor in case of rapid direction change
+      - delay: 500ms
       - switch.turn_on: relay_16
     close_duration: 0.5min
     stop_action:
-      - switch.turn_off: relay_16
-      - delay: 100ms
       - switch.turn_off: relay_15
+      - delay: 100ms
+      - switch.turn_off: relay_16
 
 #KONFIGURACJA POZOSTAŁE
 text_sensor:
