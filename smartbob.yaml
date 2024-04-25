@@ -721,7 +721,7 @@ sensor:
     name: Uptime Sensor
     id: uptime_sensor_M03
     internal: true
-    update_interval: 1s
+    update_interval: 60s
     on_raw_value:
       then:
         - text_sensor.template.publish:
