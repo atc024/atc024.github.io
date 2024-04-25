@@ -76,7 +76,7 @@ binary_sensor:
   - platform: status
     name: "Status"
     icon: mdi:check-network-outline
-  
+
   # KONFIGURACJA WEJŚĆ
   - platform: gpio
     name: "INPUT-01"
@@ -529,12 +529,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_01
-    open_duration: 0.5min
+    open_duration: 35s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_02
-    close_duration: 0.5min
+    close_duration: 35s
     stop_action:
       - switch.turn_off: relay_01
       - delay: 100ms
@@ -549,12 +549,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_03
-    open_duration: 0.5min
+    open_duration: 25s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_04
-    close_duration: 0.5min
+    close_duration: 25s
     stop_action:
       - switch.turn_off: relay_03
       - delay: 100ms
@@ -569,12 +569,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_05
-    open_duration: 0.5min
+    open_duration: 25s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_06
-    close_duration: 0.5min
+    close_duration: 25s
     stop_action:
       - switch.turn_off: relay_05
       - delay: 100ms
@@ -589,12 +589,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_07
-    open_duration: 0.5min
+    open_duration: 25s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_08
-    close_duration: 0.5min
+    close_duration: 25s
     stop_action:
       - switch.turn_off: relay_07
       - delay: 100ms
@@ -609,12 +609,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_09
-    open_duration: 0.5min
+    open_duration: 25s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_10
-    close_duration: 0.5min
+    close_duration: 25s
     stop_action:
       - switch.turn_off: relay_09
       - delay: 100ms
@@ -629,12 +629,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_11
-    open_duration: 0.5min
+    open_duration: 25s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_12
-    close_duration: 0.5min
+    close_duration: 25s
     stop_action:
       - switch.turn_off: relay_11
       - delay: 100ms
@@ -649,12 +649,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_13
-    open_duration: 0.5min
+    open_duration: 35s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_14
-    close_duration: 0.5min
+    close_duration: 35s
     stop_action:
       - switch.turn_off: relay_13
       - delay: 100ms
@@ -669,12 +669,12 @@ cover:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_15
-    open_duration: 0.5min
+    open_duration: 35s
     close_action:
       # Min 0.5s needed to protect the motor in case of rapid direction change
       - delay: 500ms
       - switch.turn_on: relay_16
-    close_duration: 0.5min
+    close_duration: 35s
     stop_action:
       - switch.turn_off: relay_15
       - delay: 100ms
