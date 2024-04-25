@@ -12,7 +12,7 @@ esp32:
     type: arduino
 
 logger:
-  level: VERBOSE
+  level: INFO
 
 # Enable Home Assistant API
 api:
