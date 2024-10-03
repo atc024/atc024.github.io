@@ -21,7 +21,8 @@ api:
   reboot_timeout: 0s
 
 ota:
-  password: "46554bbf13e8d6c5596a0d78cc8bd4fb"
+  - platform: esphome
+    password: "46554bbf13e8d6c5596a0d78cc8bd4fb"
 
 wifi:
   ssid: !secret wifi_ssid
