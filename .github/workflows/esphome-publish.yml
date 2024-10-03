@@ -53,7 +53,7 @@ jobs:
       - run: ./decrypt_secrets.sh
         env:
           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
-      - uses: esphome/build-action@v4.0.1
+      - uses: esphome/build-action@v4.0.3
         id: esphome-build
         with:
           yaml_file: ${{ matrix.file }}
