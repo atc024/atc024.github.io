@@ -5,16 +5,19 @@ on:
 
 jobs:
   ci:
-    name: Building ${{ matrix.file }}
+    name: Building ${{ matrix.file }} / ${{ matrix.esphome-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         file:
           - smartbob.yaml
+        esphome-version:
+          - stable
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4.1.7
-      - name: Build ESPHome firmware to verify configuration
+      - name: ESPHome ${{ matrix.esphome-version }}
         uses: esphome/build-action@v4.0.3
         with:
-          yaml_file: ${{ matrix.file }}
+          yaml-file: ${{ matrix.file }}
+          version: ${{ matrix.esphome-version }}
