@@ -53,7 +53,7 @@ jobs:
       - run: ./decrypt_secrets.sh
         env:
           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
-      - uses: esphome/build-action@v5.0.0
+      - uses: esphome/build-action@v7.0.0
         id: esphome-build
         with:
           yaml-file: ${{ matrix.file }}
@@ -61,7 +61,7 @@ jobs:
       - run: |
           mkdir output
           mv "${{ steps.esphome-build.outputs.name }}" output/
-      - uses: actions/upload-artifact@v4.4.0
+      - uses: actions/upload-artifact@v4.6.2
         with:
           name: ${{ inputs.name }}
           path: output
@@ -72,7 +72,7 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: actions/download-artifact@v4.1.8
+      - uses: actions/download-artifact@v4.3.0
         with:
           path: output
           name: ${{ inputs.name }}
@@ -84,7 +84,7 @@ jobs:
       - run: cp -R static/* output
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.7.2
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           branch: gh-pages
           folder: output
