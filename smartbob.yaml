@@ -1,6 +1,6 @@
 substitutions:
   friendly_name: "SmartBob-1"
-  name: "smartbob-16-relay"
+  name: "smartbob-16-relay-test"
 
 esphome:
   name: "${name}"
