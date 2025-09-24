@@ -2,7 +2,7 @@
   "chipFamily": "ESP32",
   "ota": {
     "path": "smartbob-16-relay-esp32.ota.bin",
-    "md5": "f2834ff545a9b07db2c31b9c6b482701"
+    "md5": "e30551d027e44f5932eb64057403735d"
   },
   "parts": [
     {
